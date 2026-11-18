@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import multer from 'multer';
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
@@ -10,6 +11,9 @@ import {
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const rootDir = fs.existsSync(path.join(__dirname, 'a-main'))
+  ? __dirname
+  : path.resolve(__dirname, '..');
 
 const app = express();
 const upload = multer({ storage: multer.memoryStorage() });
@@ -124,8 +128,8 @@ app.post(
 );
 
 // Serve static directories
-const aMainDir = path.join(__dirname, 'a-main');
-const toolMainDir = path.join(__dirname, 'tool-main');
+const aMainDir = path.join(rootDir, 'a-main');
+const toolMainDir = path.join(rootDir, 'tool-main');
 
 app.get('/favicon.ico', (_req: Request, res: Response) => {
   res.status(204).end();
