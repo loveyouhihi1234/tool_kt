@@ -1,0 +1,5 @@
+{
+  "name": "Tool KT - Bộ Công Cụ Kế Toán & Tự Động Hóa Hợp Đồng",
+  "description": "Bộ công cụ tiện ích văn phòng (Base64, UNI-TCVN3, Đọc tiền, Active Win/Office) và hệ thống xuất hợp đồng tự động (Hợp đồng Gạo, Hợp đồng Xe tải, Hợp đồng Nguyên tắc & Biên bản Giao nhận) từ Excel và Word mẫu.",
+  "requestFramePermissions": []
+}

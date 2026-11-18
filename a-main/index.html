@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ thống Quản lý & Tự động hóa Hợp đồng</title>
+    <title>Tool KT - Hệ thống Quản lý & Tự động hóa Hợp đồng</title>
+    <meta name="description" content="Bộ công cụ tiện ích văn phòng và hệ thống xuất hợp đồng tự động (Hợp đồng Gạo, Hợp đồng Xe tải, Hợp đồng Nguyên tắc & Biên bản Giao nhận) từ Excel và Word mẫu.">
+    <meta property="og:title" content="Tool KT - Hệ thống Quản lý & Tự động hóa Hợp đồng">
+    <meta property="og:description" content="Hệ thống xuất hợp đồng tự động từ Excel và Word mẫu.">
     <style>
         :root {
             --bg-dark: #0f172a;
@@ -451,12 +454,13 @@
 
         async function fetchFileMacDinh(url, fallbackName) {
             try {
-                const response = await fetch(url);
-                if(!response.ok) throw new Error();
+                const resolvedUrl = new URL(url, window.location.href).href;
+                const response = await fetch(resolvedUrl, { credentials: 'same-origin' });
+                if(!response.ok) throw new Error(`HTTP ${response.status}`);
                 const blob = await response.blob();
                 return new File([blob], fallbackName);
             } catch (error) {
-                alert(`❌ Lỗi: Không tìm thấy file mẫu mặc định [${url}]! Mọi thứ phải nằm chung 1 thư mục với file HTML nhé.`);
+                ghiLog(`❌ Lỗi: Không tìm thấy file mẫu mặc định [${url}] (${error?.message || error})`, true);
                 return null;
             }
         }

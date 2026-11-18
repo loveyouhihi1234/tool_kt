@@ -1,7 +1,7 @@
 @echo off
-:: Yêu c?u quy?n admin
-:: N?u không ch?y v?i quy?n admin thì s? t? nâng quy?n
-:: (nh? dòng này mà không c?n click chu?t ph?i)
+:: Yï¿½u c?u quy?n admin
+:: N?u khï¿½ng ch?y v?i quy?n admin thï¿½ s? t? nï¿½ng quy?n
+:: (nh? dï¿½ng nï¿½y mï¿½ khï¿½ng c?n click chu?t ph?i)
 
 :: Ki?m tra quy?n admin
 net session >nul 2>&1
